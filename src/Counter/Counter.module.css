@@ -1,25 +1,29 @@
-/* Counter.module.css */
-
-.container {
+.mainContainer {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.input {
-  margin-bottom: 50px;
+.dateContainer {
+  /* border: 2px solid blue; */
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  width: 50%;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.start {
-  margin-right: 20px;
-}
-
-.stop {
-  margin-bottom: 20px;
-}
-
-.countdown {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid red; */
+  /* margin-left: 450px; */
+  width: 50%;
+  height: 100%;
+  margin-top: 50px;
+  gap: 20px;
+  flex-wrap: wrap;
 }

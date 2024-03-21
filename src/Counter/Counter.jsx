@@ -118,9 +118,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, Button } from '@mui/material';
-
+import styles from "./Counter.module.css";
+import 'animate.css';
 const CountdownTimer = () => {
     const [targetDate, setTargetDate] = useState('');
+    const [selectedDateTime, setSelectedDateTime] = useState('');
     const [countdown, setCountdown] = useState({
         days: '0',
         hours: '0',
@@ -155,6 +157,7 @@ const CountdownTimer = () => {
     const handleInputChange = (event) => {
         const { value } = event.target;
         setTargetDate(new Date(value).getTime());
+        setSelectedDateTime(value);
     };
 
     const handleStartClick = () => {
@@ -179,60 +182,73 @@ const CountdownTimer = () => {
     }, [countdownInterval]);
 
     return (
-        <div style={{ display: 'flex', gap: '20px' }}>
-            <Card variant="outlined">
-                <CardContent>
-                    <Typography variant="h4" component="div">
-                        {countdown.days}
-                    </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                        Days
-                    </Typography>
-                </CardContent>
-            </Card>
-            <Card variant="outlined">
-                <CardContent>
-                    <Typography variant="h4" component="div">
-                        {countdown.hours}
-                    </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                        Hours
-                    </Typography>
-                </CardContent>
-            </Card>
-            <Card variant="outlined">
-                <CardContent>
-                    <Typography variant="h4" component="div">
-                        {countdown.minutes}
-                    </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                        Minutes
-                    </Typography>
-                </CardContent>
-            </Card>
-            <Card variant="outlined">
-                <CardContent>
-                    <Typography variant="h4" component="div">
-                        {countdown.seconds}
-                    </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                        Seconds
-                    </Typography>
-                </CardContent>
-            </Card>
-            <div>
+        // style={{ display: 'flex', gap: '20px' }}
+        <div className={styles.mainContainer}>
+            <div className={styles.dateContainer}>
                 <input
                     type="datetime-local"
                     value={targetDate}
                     onChange={handleInputChange}
+                    style={{ minWidth: '100px', borderRadius: "8px" }}
                 />
-                <Button onClick={handleStartClick} variant="contained" color="primary">
-                    Start Countdown
-                </Button>
-                <Button onClick={handleStopClick} variant="contained" color="secondary">
-                    Stop Countdown
-                </Button>
+
+                <div style={{ display: "flex" }}>
+                    <Button onClick={handleStartClick} variant="contained" color="primary" style={{ marginRight: '20px', width: '100%' }}>
+                        Start Countdown
+                    </Button>
+                    <Button onClick={handleStopClick} variant="contained" color="secondary" style={{ gap: '20px', width: '100%' }}>
+                        Stop Countdown
+                    </Button>
+                </div>
+
             </div>
+            <div>
+                <h2>{selectedDateTime}</h2>
+            </div>
+            <div className={styles.cardContainer} >
+                <Card variant="outlined" style={{ opacity: 0.8, borderRadius: '8px' }}>
+                    <CardContent>
+                        <Typography variant="h4" component="div" style={{ color: '#000' }}>
+                            {countdown.days}
+                        </Typography>
+                        <Typography variant="subtitle1" color="textSecondary" style={{ color: '#000' }}>
+                            Days
+                        </Typography>
+                    </CardContent>
+                </Card>
+                <Card variant="outlined" style={{ opacity: 0.8, borderRadius: '8px' }}>
+                    <CardContent>
+                        <Typography variant="h4" component="div" style={{ color: '#000' }}>
+                            {countdown.hours}
+                        </Typography>
+                        <Typography variant="subtitle1" color="textSecondary" style={{ color: '#000' }}>
+                            Hours
+                        </Typography>
+                    </CardContent>
+                </Card>
+                <Card variant="outlined" style={{ opacity: 0.8, borderRadius: '8px' }}>
+                    <CardContent>
+                        <Typography variant="h4" component="div" style={{ color: '#000' }}>
+                            {countdown.minutes}
+                        </Typography>
+                        <Typography variant="subtitle1" color="textSecondary" style={{ color: '#000' }}>
+                            Minutes
+                        </Typography>
+                    </CardContent>
+                </Card>
+                <Card variant="outlined" style={{ opacity: 0.8, borderRadius: '8px' }}>
+                    <CardContent>
+                        <Typography variant="h4" component="div" style={{ color: '#000' }}>
+                            {countdown.seconds}
+                        </Typography>
+                        <Typography variant="subtitle1" color="textSecondary" style={{ color: '#000' }}>
+                            Seconds
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </div>
+
+
         </div>
     );
 };

@@ -2,3 +2,12 @@
   text-align: center;
   margin-top: 8rem;
 }
+body {
+  background: rgb(223, 210, 244);
+  background: linear-gradient(
+    103deg,
+    rgba(223, 210, 244, 1) 0%,
+    rgba(108, 68, 184, 1) 35%,
+    rgba(102, 59, 194, 0.6783963585434174) 100%
+  );
+}
